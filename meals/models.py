@@ -1,7 +1,15 @@
 from django.db import models
 
 
-class Ingredient(models.Model):
+class TimeStampMixin(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class Ingredient(TimeStampMixin):
     name = models.CharField("Nom", max_length=50)
 
     def __str__(self):
@@ -11,7 +19,7 @@ class Ingredient(models.Model):
         verbose_name = "Ingrédient"
 
 
-class Meal(models.Model):
+class Meal(TimeStampMixin):
     class CompletionTimes(models.TextChoices):
         fast = "FT", "Rapide"
         medium = "MD", "Moyen"
@@ -44,7 +52,7 @@ class Meal(models.Model):
         verbose_name_plural = "Repas"
 
 
-class IngredientQuantity(models.Model):
+class IngredientQuantity(TimeStampMixin):
     class Units(models.TextChoices):
         grams = "GR", "Grammes"
         centiliter = "CL", "Centilitre"
