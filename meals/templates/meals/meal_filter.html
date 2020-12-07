@@ -7,16 +7,21 @@
     <section class="jumbotron text-center">
       <div class="container">
         <h1>Tous les repas</h1>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Ajouter un repas</a>
-        </p>
+        <form method="get">
+          <div class="input-group mb-3">
+            {{ filter.form.name }}
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="submit">Rechercher</button>
+            </div>
+          </div>
+        </form>
       </div>
     </section>
 
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row">
-          {% for meal in meal_list %}
+          {% for meal in filter.qs %}
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <svg class="bd-placeholder-img card-img-top" width="100%" height="225"

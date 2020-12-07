@@ -1,7 +1,8 @@
 from django.urls import path
+from django_filters.views import FilterView
 
-from meals.views import MealListView
+from meals.filters import MealFilter
 
 urlpatterns = [
-    path('', MealListView.as_view(), name="meal-list"),
+    path('', FilterView.as_view(filterset_class=MealFilter)),
 ]
