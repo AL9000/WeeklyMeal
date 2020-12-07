@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_filters',
     # TODO Split in dev settings
     'debug_toolbar',
     'django_extensions',
