@@ -58,6 +58,7 @@ class IngredientQuantity(TimeStampMixin):
         centiliter = "CL", "Centilitre"
         unit = "UN", "Unité"
         pinch = "PI", "Pincée"
+        slice = "SL", "Tranche"
 
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     meal = models.ForeignKey(Meal, on_delete=models.CASCADE)
