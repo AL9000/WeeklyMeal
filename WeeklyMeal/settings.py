@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # TODO Split in dev settings
     'debug_toolbar',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # For Django Debug Toolbar
+# TODO Split in dev settings
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
