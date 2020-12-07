@@ -19,6 +19,19 @@ class Ingredient(TimeStampMixin):
         verbose_name = "Ingrédient"
 
 
+class Season(models.Model):
+    class Seasons(models.TextChoices):
+        spring = "SP", "Printemps"
+        summer = "SU", "Été"
+        autumn = "AU", "Automne"
+        winter = "WI", "Hiver"
+
+    name = models.CharField("Nom", choices=Seasons.choices, max_length=50)
+
+    def __str__(self):
+        return self.get_name_display()
+
+
 class Meal(TimeStampMixin):
     class CompletionTimes(models.TextChoices):
         fast = "FT", "Rapide"
@@ -31,15 +44,9 @@ class Meal(TimeStampMixin):
         hard = 3, "Difficile"
         expert = 4, "Expert"
 
-    class Seasons(models.TextChoices):
-        spring = "SP", "Printemps"
-        summer = "SU", "Été"
-        autumn = "AU", "Automne"
-        winter = "WI", "Hiver"
-
     name = models.CharField("Nom", max_length=50)
     description = models.TextField("Description", max_length=500, blank=True)
-    season = models.CharField("Saison", choices=Seasons.choices, max_length=50, blank=True)
+    seasons = models.ManyToManyField(Season, verbose_name="Saisons", blank=True)
     url = models.URLField("url", blank=True)
     ingredients = models.ManyToManyField(Ingredient, through="IngredientQuantity")
     difficulty = models.IntegerField("Difficulté", choices=Difficulties.choices)

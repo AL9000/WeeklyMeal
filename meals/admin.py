@@ -15,7 +15,12 @@ class IngredientAdmin(admin.ModelAdmin):
 
 @admin.register(Meal)
 class MealAdmin(admin.ModelAdmin):
-    fields = ("name", "description", "season", "url", "difficulty")
-    list_display = ("name", "description", "season", "url", "difficulty")
-    list_filter = ("season", "difficulty")
+    fields = ("name", "description", "seasons", "url", "difficulty")
+    list_display = ("name", "description", "get_seasons", "url", "difficulty")
+    list_filter = ("seasons", "difficulty")
     inlines = (IngredientQuantityInline,)
+
+    def get_seasons(self, meal):
+        return [season.get_name_display() for season in meal.seasons.all()]
+
+    get_seasons.short_description = "Saisons"
