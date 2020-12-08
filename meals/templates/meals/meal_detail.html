@@ -1,0 +1,49 @@
+{% extends "meals/base.html" %}
+
+{% block content %}
+
+  <main role="main">
+
+    <section class="jumbotron text-center" style="background: url('{{ meal.picture_url }}');">
+      <div id="jumbotron-title" class="p-5 container rounded-lg shadow">
+        <h1><a href="{{ meal.url }}" target="_blank">{{ meal.name }}</a></h1>
+        <h2>
+          <span class="badge badge-pill badge-{% if meal.difficulty == 1 %}success{% elif meal.difficulty == 2 %}info{% elif meal.difficulty == 3 %}warning{% elif meal.difficulty == 4 %}danger{% endif %}">
+            {{ meal.get_difficulty_display }}
+          </span>
+        </h2>
+        <p class="lead">
+          {{ meal.seasons.all|join:', ' }}
+        </p>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <p class="lead text-center">
+              {{ meal.comment }}
+            </p>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col col-lg-5">
+            <ul class="list-group">
+              {% for ingredient in meal.ingredientquantity_set.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  {{ ingredient.ingredient }}
+                  <span class="badge badge-primary badge-pill">
+                    {{ ingredient.quantity|floatformat }} {{ ingredient.get_unit_display }}{{ ingredient.quantity|pluralize }}
+                  </span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+{% endblock %}
