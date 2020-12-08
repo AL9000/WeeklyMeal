@@ -3,6 +3,11 @@ from django.contrib import admin
 from meals.models import Ingredient, IngredientQuantity, Meal
 
 
+admin.site.site_header = "Les menus de la semaine"
+admin.site.site_title = "Les menus de la semaine"
+admin.site.index_title = "Les menus de la semaine"
+
+
 class IngredientQuantityInline(admin.TabularInline):
     model = IngredientQuantity
     extra = 3
