@@ -7,6 +7,6 @@ from meals.views import MealDetailView
 
 app_name = 'meals'
 urlpatterns = [
-    path("", FilterView.as_view(filterset_class=MealFilter)),
+    path("", FilterView.as_view(filterset_class=MealFilter), name="meal-list"),
     path("<int:pk>/", MealDetailView.as_view(), name="meal-detail"),
 ]
