@@ -8,7 +8,7 @@
       <div id="jumbotron-title" class="p-5 container rounded-lg shadow">
         <h1><a href="{{ meal.url }}" target="_blank">{{ meal.name }}</a></h1>
         <h2>
-          <span class="badge badge-pill badge-{% if meal.difficulty == 1 %}success{% elif meal.difficulty == 2 %}info{% elif meal.difficulty == 3 %}warning{% elif meal.difficulty == 4 %}danger{% endif %}">
+          <span class="badge rounded-pill bg-{% if meal.difficulty == 1 %}success{% elif meal.difficulty == 2 %}info{% elif meal.difficulty == 3 %}warning{% elif meal.difficulty == 4 %}danger{% endif %}">
             {{ meal.get_difficulty_display }}
           </span>
         </h2>
@@ -33,7 +33,7 @@
               {% for ingredient in meal.ingredientquantity_set.all %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   {{ ingredient.ingredient }}
-                  <span class="badge badge-primary badge-pill">
+                  <span class="badge rounded-pill bg-primary">
                     {{ ingredient.quantity|floatformat }} {{ ingredient.get_unit_display }}{{ ingredient.quantity|pluralize }}
                   </span>
                 </li>

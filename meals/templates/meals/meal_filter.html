@@ -10,9 +10,7 @@
         <form method="get">
           <div class="input-group mb-3">
             {{ filter.form.name }}
-            <div class="input-group-append">
-              <button class="btn btn-outline-primary" type="submit">Rechercher</button>
-            </div>
+            <button class="btn btn-outline-primary" type="submit">Rechercher</button>
           </div>
         </form>
       </div>
@@ -37,7 +35,7 @@
                 <div class="card-body">
                   <h5 class="card-title">
                     {{ meal.name }}
-                    <span class="float-right text-white badge badge-pill badge-{% if meal.difficulty == 1 %}success{% elif meal.difficulty == 2 %}info{% elif meal.difficulty == 3 %}warning{% elif meal.difficulty == 4 %}danger{% endif %}">{{ meal.get_difficulty_display }}</span>
+                    <span class="float-end text-white badge rounded-pill bg-{% if meal.difficulty == 1 %}success{% elif meal.difficulty == 2 %}info{% elif meal.difficulty == 3 %}warning{% elif meal.difficulty == 4 %}danger{% endif %}">{{ meal.get_difficulty_display }}</span>
                   </h5>
 
                   <p class="card-text">{{ meal.comment|truncatewords:"20" }}</p>
