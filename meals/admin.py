@@ -20,8 +20,8 @@ class IngredientAdmin(admin.ModelAdmin):
 
 @admin.register(Meal)
 class MealAdmin(admin.ModelAdmin):
-    fields = ("name", "description", "seasons", "url", "difficulty")
-    list_display = ("name", "description", "get_seasons", "url", "difficulty")
+    fields = ("name", "comment", "seasons", "url", "picture_url", "difficulty")
+    list_display = ("name", "comment", "get_seasons", "url", "difficulty")
     list_filter = ("seasons", "difficulty")
     inlines = (IngredientQuantityInline,)
 

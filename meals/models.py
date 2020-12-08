@@ -45,9 +45,10 @@ class Meal(TimeStampMixin):
         expert = 4, "Expert"
 
     name = models.CharField("Nom", max_length=50)
-    description = models.TextField("Description", max_length=500, blank=True)
+    comment = models.TextField("Commentaire", max_length=500, blank=True)
     seasons = models.ManyToManyField(Season, verbose_name="Saisons", blank=True)
-    url = models.URLField("url", blank=True)
+    url = models.URLField("url de la recette", blank=True)
+    picture_url = models.URLField("url de l'image", blank=True)
     ingredients = models.ManyToManyField(Ingredient, through="IngredientQuantity")
     difficulty = models.IntegerField("Difficulté", choices=Difficulties.choices)
 
