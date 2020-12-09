@@ -1,0 +1,33 @@
+{% extends "meals/base.html" %}
+
+{% block content %}
+  <div class="container mt-2" role="main">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-12">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 sticky-xl-top">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="list-group">
+              {% for meal in meal_list %}
+                {% for ingredient in meal.cart_ingredients %}
+                  <button type="button" class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ ingredient.ingredient }}
+                    <span class="badge rounded-pill bg-primary">
+                      {{ ingredient.quantity|floatformat }} {{ ingredient.get_unit_display }}{{ ingredient.quantity|pluralize }}
+                    </span>
+                  </button>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
