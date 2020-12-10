@@ -1,58 +1,60 @@
 {% extends "meals/base.html" %}
 
 {% block content %}
-  <div class="container-fluid mt-2" role="main">
-    <div class="row">
-      <div class="col-sm-10">
-        <div class="row">
+  <div class="container-fluid col-12 h-100">
+    <div class="row justify-content-center h-100">
+      <div class="col-2">
+        <ul class="list-group" id="left">
+          <li class="list-group-item disabled" aria-disabled="true">Les menus</li>
           {% for meal in meal_list %}
-            <div class="col-md-2">
-              <div class="card mb-4 shadow-sm">
-                {% if meal.picture_url %}
-                  <img src="{{ meal.picture_url }}">
-                {% else %}
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                       xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
-                       role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#55595c"/>
-                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                  </svg>
-                {% endif %}
-                <div class="card-body">
-                  <h5 class="card-title">
-                    {{ meal.name }}
-                    <span class="float-end text-white badge rounded-pill bg-{% if meal.difficulty == 1 %}success{% elif meal.difficulty == 2 %}info{% elif meal.difficulty == 3 %}warning{% elif meal.difficulty == 4 %}danger{% endif %}">{{ meal.get_difficulty_display }}</span>
-                  </h5>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href="{% url 'meals:meal-detail' meal.pk %}" class="btn btn-sm btn-outline-secondary">Voir</a>
-                    </div>
-                    <small class="text-muted">
-                      {{ meal.seasons.all|join:', ' }}
-                    </small>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <li class="list-group-item text-dark">{{ meal.name }}</li>
           {% endfor %}
-        </div>
+        </ul>
       </div>
-      <div class="col-sm-2 sticky-xl-top">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="list-group">
-              {% for meal in meal_list %}
-                {% for ingredient in meal.cart_ingredients %}
-                  <button type="button" class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ ingredient.ingredient }}
-                    <span class="badge rounded-pill bg-primary">
-                      {{ ingredient.quantity|floatformat }} {{ ingredient.get_unit_display }}{{ ingredient.quantity|pluralize }}
-                    </span>
-                  </button>
-                {% endfor %}
-              {% endfor %}
+      <div class="col-8">
+        <div class="container-fluid h-100">
+          <div class="row justify-content-center h-100">
+            <div class="col-sm bg-primary bg-gradient text-white" id="monday">
+              Lundi
+            </div>
+            <div class="col-sm bg-secondary bg-gradient text-white" id="tuesday">
+              Mardi
+            </div>
+            <div class="col-sm bg-success bg-gradient text-white" id="wednesday">
+              Mercredi
+            </div>
+            <div class="col-sm bg-danger bg-gradient text-white" id="thursday">
+              Jeudi
+            </div>
+            <div class="col-sm bg-warning bg-gradient" id="friday">
+              Vendredi
+            </div>
+            <div class="col-sm bg-info bg-gradient" id="saturday">
+              Samedi
+            </div>
+            <div class="col-sm bg-light bg-gradient" id="sunday">
+              Dimanche
             </div>
           </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="list-group">
+          <li class="list-group-item disabled" aria-disabled="true">Les ingrédients</li>
+          {% for meal in meal_list %}
+            {% for ingredient in meal.cart_ingredients %}
+              <button
+                  type="button"
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                  onclick="checkElement(this)">
+                <input class="form-check-input me-1" type="checkbox">
+                {{ ingredient.ingredient }}
+                <span class="badge rounded-pill bg-primary">
+                  {{ ingredient.quantity|floatformat }} {{ ingredient.get_unit_display }}{{ ingredient.quantity|pluralize }}
+                </span>
+              </button>
+            {% endfor %}
+          {% endfor %}
         </div>
       </div>
     </div>
