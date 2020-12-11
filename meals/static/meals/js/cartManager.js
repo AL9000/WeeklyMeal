@@ -50,24 +50,24 @@ function addToCart(mealPk) {
   updateCart(mealPk);
   // Now update the DOM
   updateCartBadge();
-  updateCartLink()
+  updateCartLink();
 }
 
 function checkElement(element) {
   element.firstElementChild.checked = !element.firstElementChild.checked;
 }
 
-window.onload = function() {
+window.onload = function () {
   dragula(
    [
-    document.querySelector('#left'),
-    document.querySelector('#monday'),
-    document.querySelector('#tuesday'),
-    document.querySelector('#wednesday'),
-    document.querySelector('#thursday'),
-    document.querySelector('#friday'),
-    document.querySelector('#saturday'),
-    document.querySelector('#sunday'),
+     document.querySelector('#left'),
+     document.querySelector('#monday'),
+     document.querySelector('#tuesday'),
+     document.querySelector('#wednesday'),
+     document.querySelector('#thursday'),
+     document.querySelector('#friday'),
+     document.querySelector('#saturday'),
+     document.querySelector('#sunday'),
    ]
   );
   updateCartBadge();
