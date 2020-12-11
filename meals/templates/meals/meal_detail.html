@@ -15,6 +15,9 @@
         <p class="lead">
           {{ meal.seasons.all|join:', ' }}
         </p>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-outline-primary" type="button" onclick="addToCart({{ meal.pk }})">Ajouter</button>
+        </div>
       </div>
     </section>
 
