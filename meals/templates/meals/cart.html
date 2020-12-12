@@ -3,7 +3,7 @@
 {% block content %}
   <div class="container-fluid col-12 h-100">
     <div class="row justify-content-center h-100">
-      <div class="col-2">
+      <div class="col-sm-12 col-md-2 mt-3">
         <ul class="list-group" id="left">
           <button type="button" class="list-group-item list-group-item-action active" aria-current="true" onclick="emptyCart()">
             Vider le panier
@@ -14,34 +14,34 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="col-8">
+      <div class="col-sm-12 col-md-8 mt-2 mb-2">
         <div class="container-fluid h-100">
           <div class="row justify-content-center h-100">
-            <div class="col-sm bg-primary bg-gradient text-white" id="monday">
+            <div class="col-sm bg-primary bg-gradient text-center text-white" id="monday">
               Lundi
             </div>
-            <div class="col-sm bg-secondary bg-gradient text-white" id="tuesday">
+            <div class="col-sm bg-secondary bg-gradient text-center text-white" id="tuesday">
               Mardi
             </div>
-            <div class="col-sm bg-success bg-gradient text-white" id="wednesday">
+            <div class="col-sm bg-success bg-gradient text-center text-white" id="wednesday">
               Mercredi
             </div>
-            <div class="col-sm bg-danger bg-gradient text-white" id="thursday">
+            <div class="col-sm bg-danger bg-gradient text-center text-white" id="thursday">
               Jeudi
             </div>
-            <div class="col-sm bg-warning bg-gradient" id="friday">
+            <div class="col-sm bg-warning bg-gradient text-center text-white" id="friday">
               Vendredi
             </div>
-            <div class="col-sm bg-info bg-gradient" id="saturday">
+            <div class="col-sm bg-info bg-gradient text-center text-white" id="saturday">
               Samedi
             </div>
-            <div class="col-sm bg-light bg-gradient" id="sunday">
+            <div class="col-sm bg-dark bg-gradient text-center text-white" id="sunday">
               Dimanche
             </div>
           </div>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-sm-12 col-md-2 mt-3">
         <div class="list-group">
           <li class="list-group-item disabled" aria-disabled="true">Les ingrédients</li>
           {% for meal in meal_list %}
