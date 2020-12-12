@@ -25,7 +25,8 @@ class MealFilter(django_filters.FilterSet):
         widget=forms.Select(attrs={'class': 'form-control'}),
     )
 
-    def meal_filter(self, queryset, name, value):
+    @staticmethod
+    def meal_filter(queryset, name, value):
         return Meal.objects.filter(
             Q(name__icontains=value) |
             Q(comment__icontains=value) |
