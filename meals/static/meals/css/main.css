@@ -1,6 +1,15 @@
 html,body {
   height: 100%;
 }
+body {
+  padding-top: 57px;
+}
+
+@media (max-width: 992px) {
+  body {
+    padding-top: 64px;
+  }
+}
 
 #id_seasons {
   list-style: none;
@@ -72,4 +81,3 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
-
