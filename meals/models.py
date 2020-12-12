@@ -33,12 +33,8 @@ class Season(models.Model):
 
 
 class Meal(TimeStampMixin):
-    class CompletionTimes(models.TextChoices):
-        fast = "FT", "Rapide"
-        medium = "MD", "Moyen"
-        long = "LG", "Long"
-
     class Difficulties(models.IntegerChoices):
+        other = 0, "Rien à faire !"
         easy = 1, "Facile"
         normal = 2, "Normal"
         hard = 3, "Difficile"
