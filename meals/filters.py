@@ -1,7 +1,8 @@
 import django_filters
 from django import forms
+from django.forms import CheckboxSelectMultiple
 
-from meals.models import Meal
+from meals.models import Meal, Season
 
 
 class MealFilter(django_filters.FilterSet):
@@ -12,7 +13,13 @@ class MealFilter(django_filters.FilterSet):
             "placeholder": "Nom de recette",
         })
     )
+    seasons = django_filters.ModelMultipleChoiceFilter(
+        queryset=Season.objects.all(),
+        widget=CheckboxSelectMultiple(attrs={
+            "class": "list-group list-group-horizontal"
+        }),
+    )
 
     class Meta:
         model = Meal
-        fields = ["name", ]
+        fields = ["name", "seasons"]

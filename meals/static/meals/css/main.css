@@ -2,6 +2,22 @@ html,body {
   height: 100%;
 }
 
+#id_seasons {
+  list-style: none;
+}
+
+#id_seasons label {
+  display: flex;
+}
+
+#id_seasons li {
+  margin-right: 2rem;
+}
+
+#id_seasons input {
+  margin-right: 5px;
+}
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
