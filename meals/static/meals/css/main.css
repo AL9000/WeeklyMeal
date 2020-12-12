@@ -5,12 +5,6 @@ body {
   padding-top: 57px;
 }
 
-@media (max-width: 992px) {
-  body {
-    padding-top: 64px;
-  }
-}
-
 #id_seasons {
   list-style: none;
 }
@@ -36,12 +30,6 @@ body {
   user-select: none;
 }
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-
 .jumbotron {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -51,14 +39,6 @@ body {
 
 #jumbotron-title {
   background-color: rgba(255, 255, 255, 0.8);
-}
-
-
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
 }
 
 .jumbotron p:last-child {
@@ -80,4 +60,25 @@ footer {
 
 footer p {
   margin-bottom: .25rem;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (max-width: 992px) {
+  body {
+    padding-top: 64px;
+  }
+}
+@media (max-width: 576px) {
+  #id_seasons {
+    flex-direction: column;
+  }
 }
