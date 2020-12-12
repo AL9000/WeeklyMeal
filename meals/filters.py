@@ -19,7 +19,11 @@ class MealFilter(django_filters.FilterSet):
             "class": "list-group list-group-horizontal"
         }),
     )
+    difficulty = django_filters.ChoiceFilter(
+        choices=Meal.Difficulties.choices,
+        widget=forms.Select(attrs={'class': 'form-control'}),
+    )
 
     class Meta:
         model = Meal
-        fields = ["name", "seasons"]
+        fields = ["name", "seasons", "difficulty"]
