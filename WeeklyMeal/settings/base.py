@@ -12,20 +12,17 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'yz-gsr9zx()y4ru!-e850-7gtmdjm5(1cod!#k87gy6ub(q&al'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+SECRET_KEY = config("SECRET_KEY")
 
 
 # Application definition
@@ -41,13 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_filters',
-    # TODO Split in dev settings
-    'debug_toolbar',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -126,9 +119,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# For Django Debug Toolbar
-# TODO Split in dev settings
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
